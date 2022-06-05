@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<body>
+<ui:composition>
+    <div id="img-content" style="float: left; margin: 1% 5% 4% 10%; display: inline-block;">
+        <p id="pic-description">График области попадания точки:</p>
+        <svg id="svg" width="386" height="386" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <rect width="386" height="386" style="fill: white; stroke: #99004C; stroke-width: 8px"/>
+
+            <polygon points="123,193 193,193 193,333" class="svg-figure-color" stroke-width="2"/>
+            <polygon points="193,53 263,53 263,193 193,193" class="svg-figure-color" stroke-width="2"/>
+            <path d="M193,193 v-140 a140,140 0 0,0-140,140z" class="svg-figure-color" stroke-width="2"/>
+
+            <line class="svg-figure-color" x1="193" y1="0" x2="193" y2="386" style="stroke: black; stroke-width: 3px"/>
+            <line class="svg-figure-color" x1="0" y1="193" x2="386" y2="193" style="stroke: black; stroke-width: 3px"/>
+            <polygon class="svg-point-color" points="383 193 367 183 367 203"/>
+            <polygon class="svg-point-color" points="193 3 183 20 203 20"/>
+
+            <line class="svg-line-color" x1="263" y1="198" x2="263" y2="188"/>
+            <line class="svg-line-color" x1="333" y1="198" x2="333" y2="188"/>
+            <line class="svg-line-color" x1="123" y1="198" x2="123" y2="188"/>
+            <line class="svg-line-color" x1="53" y1="198" x2="53" y2="188"/>
+            <line class="svg-line-color" x1="198" y1="263" x2="188" y2="263"/>
+            <line class="svg-line-color" x1="198" y1="333" x2="188" y2="333"/>
+            <line class="svg-line-color" x1="198" y1="123" x2="188" y2="123"/>
+            <line class="svg-line-color" x1="198" y1="53" x2="188" y2="53"/>
+
+            <text class="axis" x="367" y="177">X</text>
+            <text class="axis" x="204" y="19">Y</text>
+            <text x="204" y="58">R</text>
+            <text x="204" y="128">R/2</text>
+            <text x="204" y="268">-R/2</text>
+            <text x="204" y="338">-R</text>
+            <text x="328" y="177">R</text>
+            <text x="250" y="177">R/2</text>
+            <text x="105" y="177">-R/2</text>
+            <text x="42" y="177">-R</text>
+        </svg>
+    </div>
+</ui:composition>
+</body>
+</html>

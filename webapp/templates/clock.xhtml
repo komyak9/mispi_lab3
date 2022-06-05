@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<body>
+<ui:composition>
+    <h:outputScript library="js" name="jQuery.js"/>
+    <h:outputScript library="js" name="clock45.js"/>
+    <h:outputStylesheet library="css" name="clock9.css"/>
+    <table id="clock_content">
+        <tr>
+            <td>
+                <div class="clock">
+                    <div class="hour-part">
+                        <div class="hour" id="hour"></div>
+                    </div>
+                    <div class="min-part">
+                        <div class="min" id="min"></div>
+                    </div>
+                    <div class="sec-part">
+                        <div class="sec" id="sec"></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="date">
+                </div>
+            </td>
+        </tr>
+    </table>
+</ui:composition>
+</body>
+</html>

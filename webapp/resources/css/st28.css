@@ -1,0 +1,206 @@
+body .ui-widget.x-button, .button {
+    font-family: cursive;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: #F0E88A;
+    box-shadow: 0 -3px #FFE954 inset;
+    transition: 0.2s;
+    color: black;
+}
+
+body .ui-widget.x-button {
+    width: 20px;
+    height: 30px;
+}
+
+body .ui-widget.x-button-choose {
+    background: #FFE954;
+    font-family: cursive;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    box-shadow: 0 -3px #F0E88A inset;
+    transition: 0.2s;
+    color: black;
+}
+
+body .ui-widget.x-button:hover, .button:hover {
+    background: #99004C;
+    text-decoration: none;
+}
+
+body .ui-widget.x-button:active, .button:active {
+    outline: none;
+    background: rgba(163, 113, 196, 0.73);
+    box-shadow: 0 3px rgba(163, 113, 196, 0.73) inset;
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(206, 91, 238, 0.49);
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(206, 91, 238, 0.49);
+}
+
+.svg-line-color {
+    stroke: #99004C;
+    stroke-width: 2px
+}
+
+.svg-figure-color {
+    fill: #fff7fb;
+    stroke: #99004C;
+    stroke-width: 3px
+}
+
+.svg-point-color {
+    fill: #99004C;
+}
+
+.good-coord {
+    stroke: #99004C;
+    fill: #99004C;
+}
+
+.bad-coord {
+    stroke: #F0E88A;
+    fill: #F0E88A;
+}
+
+.old-coord {
+    stroke: #F03E81;
+    fill: #F03E81;
+}
+
+td {
+    padding: 5px;
+    border: 1px solid #a52a2a;
+}
+
+.valueText {
+    font: bold 18px "Courier New";
+    margin-bottom: 2%;
+}
+
+input[type="radio"] {
+    margin-left: 15px;
+}
+
+#X_form {
+    margin-bottom: 6%;
+}
+
+#Y_form {
+    margin-bottom: 6%;
+}
+
+#R_form {
+    margin-bottom: 6%;
+}
+
+body .button {
+    margin-top: 2%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font: bold 14px "Courier New";
+    border: 2px solid #99004C;
+    height: 35px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+body .result-table {
+    background: rgb(255, 255, 255);
+}
+
+.value_message {
+    font: bold 14px "Courier New";
+    color: red;
+    display: block;
+}
+
+button {
+    margin-top: 10%;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+body .form {
+    float: left;
+    margin: 3% 4% 4% 10%;
+    display: inline-block;
+}
+
+.table-wrap {
+    width: 80%;
+    clear: both;
+    margin-top: 22%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+caption {
+    caption-side: bottom;
+    text-align: right;
+    padding: 10px 0;
+}
+
+table {
+    border: 4px double #333;
+    border-collapse: separate;
+    width: 100%;
+    border-spacing: 7px 11px;
+}
+
+.body {
+    background-color: #FFF2F8;
+}
+
+div[class="header"] {
+    background-color: #99004C;
+    color: #FFF2F8;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+#text1 {
+    text-align: left;
+    margin-left: 5%;
+}
+
+#text2 {
+    text-align: right;
+    margin-right: 5%;
+}
+
+.head-text {
+    font: italic small-caps 36px fantasy;
+}
+
+#pic-description {
+    margin-bottom: 2%;
+}
+
+html, body, p {
+    padding: 0;
+    margin: 0;
+    top: 0;
+}
+
+div {
+    padding: 0;
+    margin: 0;
+}

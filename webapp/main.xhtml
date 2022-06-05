@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://xmlns.jcp.org/jsf/html ">
+<f:view>
+    <h:body>
+        <ui:composition template="templates/template.xhtml">
+            <ui:define name="content">
+                <h:outputScript library="js" name="ee.js"/>
+                <h:outputScript library="js" name="jQuery.js"/>
+                <ui:include src="templates/picture.xhtml"/>
+                <div class="form">
+                    <h:form id="main-f">
+                        <div id="X_form">
+                            <h:outputText styleClass="valueText" value="Выберите значение X:"/>
+                            <p:commandLink id="x-button-default" class="x-button" type="button" value="-5"/>
+                            <p:commandLink class="x-button" type="button" value="-4"/>
+                            <p:commandLink class="x-button" type="button" value="-3"/>
+                            <p:commandLink class="x-button" type="button" value="-2"/>
+                            <p:commandLink class="x-button" type="button" value="-1"/>
+                            <p:commandLink class="x-button" type="button" value="0"/>
+                            <p:commandLink class="x-button" type="button" value="1"/>
+                            <p:commandLink class="x-button" type="button" value="2"/>
+                            <p:commandLink class="x-button" type="button" value="3"/>
+                            <h:inputHidden value="#{dataBeans.newData.x}" id="inputX">
+                                <f:validateRequired/>
+                                <f:validateLongRange minimum="-5" maximum="3"/>
+                            </h:inputHidden>
+                        </div>
+
+                        <div id="Y_form">
+                            <h:outputText styleClass="valueText"
+                                          value="Введите значение Y (от -5 до 3 включительно): "/>
+                            <h:inputText id="inputY" maxlength="15" a:placeholder="Введите Y..."
+                                         value="#{dataBeans.newData.y}">
+                                <f:validateRequired/>
+                                <f:validateDoubleRange minimum="-5" maximum="3"/>
+                            </h:inputText>
+                        </div>
+
+
+                        <div id="R_form">
+                            <h:outputText styleClass="valueText" value="Выберите значение R:"/>
+                            <h:selectOneMenu value="#{dataBeans.newData.r}" id="inputR">
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                                <f:validateRequired/>
+                            </h:selectOneMenu>
+                        </div>
+
+                        <div>
+                            <h:button class="button" outcome="toIndex" value="Назад" style="margin-right: 10%"/>
+                            <h:commandButton id="submit" type="submit" styleClass="button" value="Результат"
+                                             action="#{dataBeans.addData}">
+                                <f:ajax execute="main-f" render="panel"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="button" id="reset" value="Очистить"
+                                             action="#{dataBeans.clear}">
+                                <f:ajax execute="main-f" render="panel"/>
+                            </h:commandButton>
+                        </div>
+                    </h:form>
+                </div>
+                <div class="table-wrap">
+                    <ui:include src="templates/table.xhtml"/>
+                </div>
+            </ui:define>
+            <ui:define name="button"/>
+        </ui:composition>
+    </h:body>
+</f:view>
+</html>

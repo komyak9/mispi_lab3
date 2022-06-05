@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<project name="mispi_lab3" default="compile">
+    <property file="ant.properties"/>
+
+    <path id="compile.path">
+        <fileset dir="lib/compile" includes="**/*.jar"/>
+    </path>
+
+    <path id="test.path">
+        <fileset dir="lib/compile" includes="**/*.jar"/>
+        <fileset dir="lib/test" includes="**/*.jar"/>
+        <fileset dir="build" includes="**/*.jar"/>
+    </path>
+
+    <target name="compile">
+        <mkdir dir="${build.classes.main.dir}"/>
+        <javac srcdir="${src.main.dir}"
+               destdir="${build.classes.main.dir}"
+               includeantruntime="false">
+            <classpath>
+                <path refid="compile.path"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="build" depends="compile">
+        <jar destfile="${build.dir}/${ant.project.name}.jar">
+            <fileset dir="${build.classes.main.dir}"/>
+            <manifest>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Main-Class" value="main/Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean">
+        <echo>Deleting artifacts...</echo>
+        <delete dir="${build.dir}"/>
+        <delete dir="${web.classes.dir}"/>
+        <delete dir="${web.lib.dir}"/>
+        <delete dir="${docs.dir}"/>
+        <delete file="${war.file.name}"/>
+    </target>
+
+    <target name="scp" depends="war" description="перемещение собранного проекта по scp на выбранный сервер по завершению сборки">
+        <scp file="${war.file.name}"
+             todir="s312715@se.ifmo.ru:~/"
+             password="dyc664" trust="true" port="2222"/>
+    </target>
+
+    <target name="env" depends="build">
+        <echo message="--- Executing: java ${params} -jar ${build.dir}/${jar.file.name} ---"/>
+        <exec executable="bash">
+            <arg value="env.sh"/>
+            <arg value="java ${params} -jar ${build.dir}/${jar.file.name}"/>
+        </exec>
+    </target>
+
+
+    <target name="war" depends="compile">
+        <mkdir dir="${web.dir}/WEB-INF/classes"/>
+        <mkdir dir="${web.dir}/WEB-INF/lib"/>
+
+        <copy todir="${web.dir}/WEB-INF/classes">
+            <fileset dir="${build.classes.main.dir}/main">
+                <include name="**/*.class"/>
+                <exclude name="Main.class"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${web.dir}/WEB-INF/lib">
+            <fileset dir="${lib.dir}/compile">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <war warfile="${war.file.name}">
+            <fileset dir="${web.dir}"/>
+        </war>
+    </target>
+
+    <target name="deploy" depends="war">
+        <delete file="${jboss.deployment}/${war.file.name}}"/>
+        <delete file="${jboss.deployment}/${war.file.name.deployed}"/>
+        <copy file="./${war.file.name}" todir="${jboss.deployment}"/>
+    </target>
+
+    <target name="compile-tests" depends="compile">
+        <mkdir dir="${build.classes.test.dir}"/>
+        <javac srcdir="${src.test.dir}"
+               destdir="${build.classes.test.dir}"
+               includeantruntime="false">
+            <classpath>
+                <path refid="test.path"/>
+                <pathelement location="${build.classes.main.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="build, compile-tests">
+        <junit printsummary="on">
+            <classpath location="${lib.dir}/compile/junit-4.13.2.jar" />
+            <classpath>
+                <path refid="test.path"/>
+                <pathelement location="${build.dir}"/>
+                <pathelement location="${build.classes.main.dir}"/>
+                <pathelement location="${build.classes.test.dir}"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="${src.test.dir}">
+                    <include name="test/*Test.java"/>
+                </fileset>
+            </batchtest>
+            <formatter type="plain" usefile="false"/>
+        </junit>
+    </target>
+</project>
